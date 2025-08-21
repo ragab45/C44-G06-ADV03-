@@ -6,61 +6,114 @@
     {
 
         #region Assem
-        public class Book
-        {
-            public string Title { get; set; }
-            public string Author { get; set; }
-            public double Price { get; set; }
-        }
+        //public class Book
+        //{
+        //    public string Title { get; set; }
+        //    public string Author { get; set; }
+        //    public double Price { get; set; }
+        //}
 
-        public class BookFunctions
-        {
-            public static string GetTitle(Book b)
-            {
-                return b.Title;
-            }
+        //public class BookFunctions
+        //{
+        //    public static string GetTitle(Book b)
+        //    {
+        //        return b.Title;
+        //    }
 
-            public static string GetAuthors(Book b)
-            {
-                return b.Author;
-            }
+        //    public static string GetAuthors(Book b)
+        //    {
+        //        return b.Author;
+        //    }
 
-            public static string GetPrice(Book b)
-            {
-                return b.Price.ToString() + " EGP";
-            }
-        }
+        //    public static string GetPrice(Book b)
+        //    {
+        //        return b.Price.ToString() + " EGP";
+        //    }
+        //}
 
-        public delegate string BookDelegate(Book b); 
+        //public delegate string BookDelegate(Book b); 
 
-        public class LibraryEngine
-        {
-            public static void ProcessBooks(List<Book> bList, BookDelegate fPtr)
-            {
-                foreach (Book b in bList)
-                {
-                    Console.WriteLine(fPtr(b));
-                }
-            }
-        }
+        //public class LibraryEngine
+        //{
+        //    public static void ProcessBooks(List<Book> bList, BookDelegate fPtr)
+        //    {
+        //        foreach (Book b in bList)
+        //        {
+        //            Console.WriteLine(fPtr(b));
+        //        }
+        //    }
+        //}
 
       
-            static void Main()
+        //    static void Main()
+        //    {
+        //        List<Book> books = new List<Book>()
+        //{
+        //    new Book(){Title="C# Basics", Author="Ali", Price=150},
+        //    new Book(){Title="OOP Concepts", Author="Sara", Price=200}
+        //};
+
+                
+        //        LibraryEngine.ProcessBooks(books, BookFunctions.GetTitle);
+        //        LibraryEngine.ProcessBooks(books, BookFunctions.GetAuthors);
+        //        LibraryEngine.ProcessBooks(books, BookFunctions.GetPrice);
+        //    }
+        //}
+    #endregion
+    #region Assem2
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public double Price { get; set; }
+    }
+
+    public class BookFunctions
+    {
+        public static string GetTitle(Book b)
+        {
+            return b.Title;
+        }
+
+        public static string GetAuthors(Book b)
+        {
+            return b.Author;
+        }
+
+        public static string GetPrice(Book b)
+        {
+            return b.Price.ToString() + " EGP";
+        }
+    }
+
+    public class LibraryEngine
+    {
+        public static void ProcessBooks(List<Book> bList, Func<Book, string> fPtr)
+        {
+            foreach (Book b in bList)
             {
-                List<Book> books = new List<Book>()
+                Console.WriteLine(fPtr(b));
+            }
+        }
+    }
+
+    
+        static void Main()
+        {
+            List<Book> books = new List<Book>()
         {
             new Book(){Title="C# Basics", Author="Ali", Price=150},
             new Book(){Title="OOP Concepts", Author="Sara", Price=200}
         };
 
-                
-                LibraryEngine.ProcessBooks(books, BookFunctions.GetTitle);
-                LibraryEngine.ProcessBooks(books, BookFunctions.GetAuthors);
-                LibraryEngine.ProcessBooks(books, BookFunctions.GetPrice);
-            }
+            // استدعاء باستخدام Func
+            LibraryEngine.ProcessBooks(books, BookFunctions.GetTitle);
+            LibraryEngine.ProcessBooks(books, BookFunctions.GetAuthors);
+            LibraryEngine.ProcessBooks(books, BookFunctions.GetPrice);
         }
-        #endregion
-
-
     }
+    #endregion
+
+
+
 
