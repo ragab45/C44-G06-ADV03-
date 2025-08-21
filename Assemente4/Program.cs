@@ -31,7 +31,7 @@
             }
         }
 
-        public delegate string BookDelegate(Book b);
+        public delegate string BookDelegate(Book b); 
 
         public class LibraryEngine
         {
